@@ -10,6 +10,10 @@ def solve_crt(remainders, moduli):
     """Solve the Chinese Remainder Theorem problem
     """
     # print(f"In solve_crt() with {remainders} and {moduli}")
+    if len(remainders) != len(moduli):
+        print("Error in solve_crt(). Arguments must be two lists with the" +
+              f"same lengths: {len(remainders)} {len(moduli)}")
+        raise ValueError
     n = 1
     for i in moduli:
         n *= i
