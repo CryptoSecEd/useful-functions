@@ -32,6 +32,16 @@ def solve_crt(remainders, moduli):
     return x % n
 
 
+def xor_bytes(bytes1, bytes2):
+    """Calculate the bitwise xor of two bytes
+    Output will only be as long as the minimum of the two inputs
+    """
+    result = bytearray()
+    for byte1, byte2 in zip(bytes1, bytes2):
+        result.append(byte1 ^ byte2)
+    return result
+
+
 def main():
     """Try calculating discrete logs using some small examples."""
     m1 = getPrime(10)
