@@ -42,6 +42,7 @@ def Pollard_Rho_one(n):
             return -1
     return d
 
+
 # method to return all prime divisors for number
 def Pollard_Rho_all(number):
     n = number
@@ -57,7 +58,7 @@ def Pollard_Rho_all(number):
         if not isprime(factor):
             continue
         if ((n % factor) == 0 and n > factor):
-            # print("One of the divisors for", n , "is ",factor)
+            print("One of the divisors for", n , "is ",factor)
             while math.gcd(n, factor) > 1 and n != 1:
                 if factor in all_factors:
                     all_factors[factor] = all_factors[factor] + 1
@@ -110,7 +111,6 @@ def main():
     print(all_f_q)
      
   
-
 # Driver function
 if __name__ == "__main__":
     main()

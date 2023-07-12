@@ -6,6 +6,35 @@ from random import randint
 from Crypto.Util.number import getPrime
 
 
+def get_responses(connection, expected):
+    """Keep requesting data from the connection and compare with the
+    expected. If it doesn't match, raise an exception. If it does,
+    subtract from the expected string. If the string is still non-empty
+    repeat. If the string is empty, return True
+    """
+    while len(expected) > 0:
+        data = connection.recv(4096)
+        # print(data)
+        # print(expected[0:len(data)])
+        if data == expected[0:len(data)]:
+            expected = expected[len(data):]
+        else:
+            print("Data did not match in get_responses")
+            print(data)
+            print(expected)
+            raise ValueError
+    return True
+
+
+def max_lists(lists):
+    """Maximum value in a list of lists"""
+    maximum = 0
+    for current in lists:
+        current.append(maximum)
+        maximum = max(current)
+    return maximum
+
+
 def solve_crt(remainders, moduli):
     """Solve the Chinese Remainder Theorem problem
     """
