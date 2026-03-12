@@ -160,4 +160,4 @@ cython_debug/
 #.idea/
 
 # Random files or data files
-.dat
+*.dat
