@@ -68,7 +68,7 @@ def Pollard_Rho_all(number):
             # print(all_factors)
         else:
             print(f"Pollard_Rho_one() gave a false factor: {factor} {n}")
-            raise ValueException
+            raise ValueError
     # print("Exiting as only left with a prime number.")
     if n == 1:
         pass
@@ -76,15 +76,12 @@ def Pollard_Rho_all(number):
         all_factors[n] = all_factors[n] + 1
     else:
         all_factors[n] = 1
-    only_primes = True
     check = 1
     for i in all_factors:
         check *= i**all_factors[i]
         if not isprime(i):
-            only_primes = False
             print("Found a factor in Pollard_Rho_all that is not prime: {all}")
-            raise ValueException
-    # print(f"Factors all are prime? {only_primes}")
+            raise ValueError
     if check != number:
         print(f"Pollard_Rho_all() did not correctly factor {number}")
         print(all_factors)
